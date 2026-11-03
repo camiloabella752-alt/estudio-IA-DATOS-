@@ -21,7 +21,7 @@ class Order(BaseModel):
 
 
 PATRON_ITEM = re.compile(
-    r"(\d+)\s*(cajas?|unidades?|kg|litros?|bolsas?)?\s*(?:de\s+)?([a-záéíóúñ]+)",
+    r"(\d+)\s*(?:(cajas?|unidad(?:es)?|kgs?|litros?|bolsas?)\b)?\s*(?:de\s+)?([a-záéíóúñ]+)",
     re.IGNORECASE,
 )
 

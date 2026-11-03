@@ -36,3 +36,17 @@ def test_captura_unidad():
     pedido = parse_order("3 cajas de leche y 2 kg papa", cliente="Tienda X")
     assert pedido.items[0].unidad == "cajas"
     assert pedido.items[1].unidad == "kg"
+
+
+@pytest.mark.parametrize(
+    "mensaje, producto, unidad",
+    [
+        ("2 bolsas", "bolsas", None),
+        ("3 bolsas de pan", "pan", "bolsas"),
+        ("1 unidad de aceite", "aceite", "unidad"),
+        ("2 kgs de papa", "papa", "kgs"),
+    ],
+)
+def test_unidad_palabra_completa(mensaje, producto, unidad):
+    item = parse_order(mensaje, cliente="Tienda X").items[0]
+    assert (item.producto, item.unidad) == (producto, unidad)
