@@ -31,3 +31,8 @@ def test_mensajes_validos(mensaje, esperado):
 def test_mensajes_invalidos(mensaje):
     with pytest.raises(ValueError):
         parse_order(mensaje, cliente="Tienda X")
+
+def test_captura_unidad():
+    pedido = parse_order("3 cajas de leche y 2 kg papa", cliente="Tienda X")
+    assert pedido.items[0].unidad == "cajas"
+    assert pedido.items[1].unidad == "kg"
