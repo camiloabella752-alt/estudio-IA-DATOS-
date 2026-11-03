@@ -33,5 +33,5 @@ def parse_order(text: str, cliente: str = "desconocido", fecha: date | None = No
         for cantidad, unidad, producto in PATRON_ITEM.findall(text)
     ]
     if not items:
-        raise ValueError(f"No encontré ningún producto con cantidad en: {text!r}")
+        raise ValueError(f"No se detectaron productos en el pedido: {text!r}")
     return Order(cliente=cliente, items=items, fecha=fecha or date.today())
