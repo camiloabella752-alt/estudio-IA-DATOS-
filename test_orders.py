@@ -10,7 +10,7 @@ from estudio_ia_datos.orders import parse_order
         ("3 cajas de leche y 2 de arroz", [("leche", 3), ("arroz", 2)]),
         ("Hola, mándame 5 kg papa para mañana", [("papa", 5)]),
         ("necesito 10 unidades de aceite", [("aceite", 10)]),
-        ("1 caja de huevos", [("huevos", 2)]) ,
+        ("1 caja de huevos", [("huevos", 1)]) ,
         ("2 de azucar, 4 de sal", [("azucar", 2), ("sal", 4)]),
     ],
 )
