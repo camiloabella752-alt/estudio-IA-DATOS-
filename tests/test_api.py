@@ -34,7 +34,9 @@ def test_texto_sin_productos(client: TestClient) -> None:
 def test_listar_con_paginacion(client: TestClient) -> None:
     for i in range(3):
         client.post(
-            "/orders", json={"text": f"{i + 1} cajas de leche", "cliente": "Tienda X"}, headers=HEADERS
+            "/orders",
+            json={"text": f"{i + 1} cajas de leche", "cliente": "Tienda X"},
+            headers=HEADERS,
         )
     r = client.get("/orders?cliente=Tienda%20X&limit=2&offset=0", headers=HEADERS)
     assert r.status_code == 200
