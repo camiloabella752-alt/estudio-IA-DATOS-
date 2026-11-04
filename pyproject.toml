@@ -6,9 +6,10 @@ readme = "README.md"
 authors = [
     { name = "Camilo Abella", email = "camiloabella752@gmail.com" }
 ]
-requires-python = ">=3.15"
+requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.162.0",
+    "psycopg[binary]>=3.3.8",
     "pydantic>=2.14.2",
     "sqlmodel>=0.0.48",
     "uvicorn>=0.54.0",

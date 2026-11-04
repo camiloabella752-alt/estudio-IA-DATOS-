@@ -1,7 +1,7 @@
 import os
 
-os.environ["DATABASE_URL"] = "sqlite:///test_orders.db"
-os.environ["API_KEY"] = "test-key"
+os.environ.setdefault("DATABASE_URL", "sqlite:///test_orders.db")
+os.environ.setdefault("API_KEY", "test-key")
 
 from collections.abc import Iterator  # noqa: E402
 
