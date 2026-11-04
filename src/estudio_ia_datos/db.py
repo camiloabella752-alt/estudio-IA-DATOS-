@@ -17,6 +17,12 @@ class OrderRecord(SQLModel, table=True):
     items_json: str
     texto_original: str
 
+class IdempotencyKey(SQLModel, table=True):
+    """Relaciona una Idempotency-Key con el job que la atendió."""
+
+    key: str = Field(primary_key=True)
+    job_id: str
+
 
 def create_tables() -> None:
     SQLModel.metadata.create_all(engine)
