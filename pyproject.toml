@@ -26,6 +26,7 @@ build-backend = "uv_build"
 
 [dependency-groups]
 dev = [
+    "faker>=40.51.0",
     "fakeredis>=2.40.0",
     "httpx>=0.28.1",
     "mypy>=2.4.1",
