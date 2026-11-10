@@ -156,6 +156,7 @@ dependencies = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "faker" },
     { name = "fakeredis" },
     { name = "httpx" },
     { name = "mypy" },
@@ -176,11 +177,24 @@ requires-dist = [
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "faker", specifier = ">=40.51.0" },
     { name = "fakeredis", specifier = ">=2.40.0" },
     { name = "httpx", specifier = ">=0.28.1" },
     { name = "mypy", specifier = ">=2.4.1" },
     { name = "pytest", specifier = ">=9.2.0" },
     { name = "ruff", specifier = ">=0.17.3" },
+]
+
+[[package]]
+name = "faker"
+version = "40.51.0"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "tzdata", marker = "sys_platform == 'win32'" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/75/d6/0aa979ef82639e19b3b456d9e42ff9adbe267e6721e67bf45e88d38520d1/faker-40.51.0.tar.gz", hash = "sha256:157b35879412fb0b1e04c39cef31864e1bb90da2a3b7905f24709c1483286028", size = 2036727, upload-time = "2026-11-09T18:16:57.007Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/36/56/37a2cbff85af9d03ff90167e7304e82ccea8e44f5b2dcf57ff2f82844d21/faker-40.51.0-py3-none-any.whl", hash = "sha256:e9320fa0a84d49c8de1dd065ecf38a50123aa321de9828a61668ebb8d9c51926", size = 2070542, upload-time = "2026-11-09T18:16:55.156Z" },
 ]
 
 [[package]]
