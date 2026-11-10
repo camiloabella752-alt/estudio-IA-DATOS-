@@ -15,16 +15,44 @@ Faker.seed(42)
 fake = Faker("es_CO")
 
 PRODUCTOS = [
-    "leche", "arroz", "azucar", "aceite", "huevos", "papa", "sal", "pan", "cafe", "panela",
-    "frijol", "lenteja", "pasta", "atun", "gaseosa", "agua", "jabon", "detergente", "papel",
-    "shampoo", "galletas", "chocolate", "harina", "avena", "queso", "mantequilla", "yogur",
-    "salchicha", "jamon", "cerveza",
+    "leche",
+    "arroz",
+    "azucar",
+    "aceite",
+    "huevos",
+    "papa",
+    "sal",
+    "pan",
+    "cafe",
+    "panela",
+    "frijol",
+    "lenteja",
+    "pasta",
+    "atun",
+    "gaseosa",
+    "agua",
+    "jabon",
+    "detergente",
+    "papel",
+    "shampoo",
+    "galletas",
+    "chocolate",
+    "harina",
+    "avena",
+    "queso",
+    "mantequilla",
+    "yogur",
+    "salchicha",
+    "jamon",
+    "cerveza",
 ]
 
 
 def main() -> None:
     clientes = [(i, fake.company(), fake.city()) for i in range(1, 51)]
-    productos = [(i, nombre, random.randrange(1500, 60000, 100)) for i, nombre in enumerate(PRODUCTOS, 1)]
+    productos = [
+        (i, nombre, random.randrange(1500, 60000, 100)) for i, nombre in enumerate(PRODUCTOS, 1)
+    ]
     inicio = date.today() - timedelta(days=365)
 
     filas = []
@@ -34,7 +62,20 @@ def main() -> None:
         cantidad = random.randint(1, 20)
         fecha = inicio + timedelta(days=random.randint(0, 364))
         creado = datetime.combine(fecha, time(random.randint(6, 20), random.randint(0, 59)))
-        filas.append((cid, cliente, ciudad, pid, producto, cantidad, precio, cantidad * precio, fecha, creado))
+        filas.append(
+            (
+                cid,
+                cliente,
+                ciudad,
+                pid,
+                producto,
+                cantidad,
+                precio,
+                cantidad * precio,
+                fecha,
+                creado,
+            )
+        )
 
     with psycopg.connect(DSN) as conn, conn.cursor() as cur:
         cur.execute("DROP TABLE IF EXISTS pedidos_raw")
