@@ -58,7 +58,8 @@ def estado_job(job_id: str, queue: Queue) -> JobOut:
         job = Job.fetch(job_id, connection=queue.connection)
     except NoSuchJobError as e:
         raise HTTPException(status_code=404, detail="Job no encontrado") from e
-    status = str(job.get_status())
+    estado = job.get_status()
+    status = estado.value if hasattr(estado, "value") else str(estado)
     order_id = int(job.result) if status == "finished" and job.result is not None else None
     return JobOut(job_id=job.id, status=status, order_id=order_id)
 
